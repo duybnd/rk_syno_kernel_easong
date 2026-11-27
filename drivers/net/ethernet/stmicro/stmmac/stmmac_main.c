@@ -906,7 +906,7 @@ static void stmmac_mac_link_down(struct phylink_config *config,
 	stmmac_mac_set(priv, priv->ioaddr, false);
 	priv->eee_active = false;
 	priv->tx_lpi_enabled = false;
-	stmmac_eee_init(priv);
+	//stmmac_eee_init(priv);
 	stmmac_set_eee_pls(priv, priv->hw, false);
 }
 
@@ -1002,7 +1002,8 @@ static void stmmac_mac_link_up(struct phylink_config *config,
 	stmmac_mac_set(priv, priv->ioaddr, true);
 	if (phy && priv->dma_cap.eee) {
 		priv->eee_active = phy_init_eee(phy, 1) >= 0;
-		priv->eee_enabled = stmmac_eee_init(priv);
+		//priv->eee_enabled = stmmac_eee_init(priv);
+		priv->eee_enabled = false;
 		priv->tx_lpi_enabled = priv->eee_enabled;
 		stmmac_set_eee_pls(priv, priv->hw, true);
 	}
